@@ -2,8 +2,8 @@
 import Page from '@/components/navigation/page/Page';
 import React from 'react';
 
-const Homepage = () => {
+const Userspage = () => {
 	return <Page>page</Page>;
 };
 
-export default Homepage;
+export default Userspage;
