@@ -14,7 +14,7 @@ import {
 	MenuItem,
 } from '@chakra-ui/react';
 import { useGetSelfQuery } from '@/store/services/authService';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks/hooks';
 import { logout } from '@/store/slices/authSlice';
 import { BiUser, BiChevronDown } from 'react-icons/bi';
 
@@ -38,7 +38,7 @@ const Header = () => {
 
 	return (
 		<Flex
-			px={8}
+			px={6}
 			bg='bg.100'
 			h={16}
 			minH={16}

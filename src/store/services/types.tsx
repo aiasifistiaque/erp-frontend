@@ -44,7 +44,7 @@ export type TableProps = {
 	sort: string;
 };
 
-export type Data = {
+export type ListType<T> = {
 	search?: string;
 	sort: string;
 	page: number;
@@ -53,7 +53,7 @@ export type Data = {
 	docsInPage: number;
 	totalDocs: number;
 	totalPages: number;
-	doc: any[];
+	doc: T[];
 };
 
 /**

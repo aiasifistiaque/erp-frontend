@@ -5,17 +5,17 @@ import { Divider } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useLoginMutation } from '../../store/services/authService';
 import Toast from '@/components/toast/Toast';
-import { useAppDispatch } from '@/hooks';
+import { useAppDispatch } from '@/hooks/hooks';
 import { login } from '@/store/slices/authSlice';
 import FormContainer from '@/components/form/container/FormContainer';
 
-type FormData = {
+type FormDataType = {
 	email: string;
 	password: string;
 };
 
-const Loginpage = () => {
-	const [formData, setFormData] = React.useState<FormData>({
+const Loginpage: React.FC = () => {
+	const [formData, setFormData] = React.useState<FormDataType>({
 		email: '',
 		password: '',
 	});
@@ -34,7 +34,12 @@ const Loginpage = () => {
 
 	useEffect(() => {
 		if (result?.isSuccess) {
-			dispatch(login(result?.data?.token));
+			dispatch(
+				login({
+					token: result?.data?.token,
+					refreshToken: result?.data?.refreshToken,
+				})
+			);
 		}
 	}, [result?.isSuccess]);
 

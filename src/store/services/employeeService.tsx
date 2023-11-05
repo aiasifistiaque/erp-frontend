@@ -1,24 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import * as lib from '../../lib/constants';
-import { Data, TableProps, User } from './types';
+import { Employee, ListType, TableProps } from './types';
+import apiService from './apiService';
 
-const tagTypes = ['Employees'];
-
-export const employeeApi = createApi({
-	reducerPath: 'employeeApi',
-	baseQuery: fetchBaseQuery({
-		baseUrl: `${lib.api.backend}`,
-		prepareHeaders: (headers, { getState }) => {
-			const token: string = (getState() as any).auth?.token;
-			if (token) {
-				headers.set('authorization', token);
-			}
-			return headers;
-		},
-	}),
-	tagTypes: tagTypes,
+export const employeeApi = apiService.injectEndpoints({
 	endpoints: builder => ({
-		getAllEmployees: builder.query<Data, TableProps>({
+		getAllEmployees: builder.query<ListType<Employee>, TableProps>({
 			query: ({ sort = '-createdAt', page = 1, limit = 10, search = '' }) => ({
 				url: '/employees',
 				params: { sort, page, limit, search },

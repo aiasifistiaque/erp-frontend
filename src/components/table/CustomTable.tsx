@@ -19,10 +19,10 @@ import React, { useState } from 'react';
 import { TbRefresh, TbSearch } from 'react-icons/tb';
 import TableHeading from './TableHeading';
 import Pagination from './Pagination';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { refresh, updateTable } from '@/store/slices/tableSlice';
 
-type CustomTableProps = TableProps & {
+export type CustomTableProps = TableProps & {
 	children: React.ReactNode;
 	header?: React.ReactNode;
 	data: any;
@@ -32,7 +32,6 @@ type CustomTableProps = TableProps & {
 
 const CustomTable: React.FC<CustomTableProps> = ({ children, header, data, isLoading, col }) => {
 	const [value, setValue] = useState('');
-	const { search } = useAppSelector(state => state.table);
 	const dispatch = useAppDispatch();
 
 	const onReset = () => {

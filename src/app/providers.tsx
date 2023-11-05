@@ -32,6 +32,19 @@ const components = {
 			color: 'text.500', // Set the color. You can use theme color tokens or raw CSS values.
 		},
 	},
+	Button: {
+		baseStyle: {
+			fontSize: '16px',
+		},
+		sizes: {
+			sm: {
+				letterSpacing: '-4%',
+			},
+			lg: {
+				//fontSize: '24px', // For large buttons
+			},
+		},
+	},
 };
 
 export const theme = extendTheme({ config, colors, components });

@@ -2,9 +2,9 @@ import { Flex, Th, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { TbArrowUp, TbArrowDown, TbArrowsDownUp } from 'react-icons/tb';
 import { BsInfoCircle } from 'react-icons/bs';
-import { useAppSelector } from '@/hooks';
+import { useAppSelector } from '@/hooks/hooks';
 
-type TitleProps = {
+export type TitleProps = {
 	children: React.ReactNode;
 	onClick?: any;
 	val?: string;

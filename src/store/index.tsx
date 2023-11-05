@@ -6,6 +6,8 @@ import { authApi } from './services/authService';
 import { employeeApi } from './services/employeeService';
 import { TOKEN_NAME } from '@/lib/constants';
 import routeSlice from './slices/routeSlice';
+import refreshTokenMiddleware from './services/refreshTokenMiddleware';
+import apiService from './services/apiService';
 
 // const preloadedState = {
 // 	auth: {
@@ -25,7 +27,13 @@ export const store = configureStore({
 	},
 	//preloadedState,
 	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware().concat(authApi.middleware).concat(employeeApi.middleware),
+		getDefaultMiddleware()
+			// .prepend(refreshTokenMiddleware)
+			// .concat(authApi.middleware)
+			// .concat(employeeApi.middleware)
+			.concat(apiService.middleware)
+			.concat(refreshTokenMiddleware),
+
 	devTools: true,
 });
 

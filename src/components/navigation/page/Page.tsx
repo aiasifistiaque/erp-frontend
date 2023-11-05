@@ -1,19 +1,12 @@
 'use client';
 import React, { useEffect } from 'react';
-import { Flex, FlexProps } from '@chakra-ui/react';
+import { FlexProps, Flex } from '@chakra-ui/react';
 import Header from '../header/Header';
-import { useAuth } from '@/hooks';
+import { useAuth } from '@/hooks/hooks';
 import { useRouter } from 'next/navigation';
 import Sidebar from '../sidebar/Sidebar';
-
-type PageProps = FlexProps & {
-	children: React.ReactNode;
-};
-
-type AuthStateProps = {
-	isLoggedIn: boolean | undefined;
-	loading: boolean;
-};
+import Body from './Body';
+import CustomBreadCrumb from './CustomBreadCrumb';
 
 const Page: React.FC<PageProps> = ({ children, ...props }) => {
 	const { loading, isLoggedIn }: AuthStateProps = useAuth();
@@ -24,29 +17,32 @@ const Page: React.FC<PageProps> = ({ children, ...props }) => {
 			router.replace('/login');
 		}
 	}, [isLoggedIn, loading]);
-
 	if (loading) return null;
 
 	if (isLoggedIn)
 		return (
-			<Flex w='100%' h='100vh' {...props}>
+			<Flex w='100%' h='100vh'>
 				<Sidebar />
-				<Flex flexDirection='column' w='100%' minH='100vh' {...props}>
+				<Flex flexDirection='column' w='100%' minH='100vh'>
 					<Header />
-					<Flex
-						flex={1}
-						flexDirection='column'
-						p={8}
-						bg='bg.200'
-						h='calc (100vh - 64px)'
-						overflowY='scroll'>
+					<Body {...props}>
+						<CustomBreadCrumb />
 						{children}
-					</Flex>
+					</Body>
 				</Flex>
 			</Flex>
 		);
 
 	return null;
+};
+
+type PageProps = FlexProps & {
+	children: React.ReactNode;
+};
+
+type AuthStateProps = {
+	isLoggedIn: boolean | undefined;
+	loading: boolean;
 };
 
 export default Page;

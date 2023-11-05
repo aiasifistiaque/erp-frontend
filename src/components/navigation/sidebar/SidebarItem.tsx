@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { navigate } from '@/store/slices/routeSlice';
 
 type SidebarItemProps = {

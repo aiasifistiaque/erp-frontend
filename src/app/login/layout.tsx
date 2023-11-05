@@ -1,6 +1,6 @@
 'use client';
 import FormContainer from '@/components/form/container/FormContainer';
-import { useAppSelector, useAuth } from '@/hooks';
+import { useAppSelector, useAuth } from '@/hooks/hooks';
 import { Center, Flex, FlexProps, Heading, Stack } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 

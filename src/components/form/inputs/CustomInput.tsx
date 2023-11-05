@@ -8,7 +8,7 @@ type CustomInputProps = InputProps & {
 	placeholder?: string;
 	required?: boolean;
 	name?: string;
-	value: any;
+	value?: any;
 };
 
 const CustomInput: React.FC<CustomInputProps> = ({

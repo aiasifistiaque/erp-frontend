@@ -4,7 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { HiArrowUturnLeft, HiArrowUturnRight } from 'react-icons/hi2';
 import TableHeading from './TableHeading';
 import SquareButton from './SquareButton';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { updateTable } from '@/store/slices/tableSlice';
 
 type PaginationProps = {
